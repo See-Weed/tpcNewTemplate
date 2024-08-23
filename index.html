@@ -27,10 +27,8 @@
   <body>
     <nav>
       <ul>
-        <!-- <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li> -->
         <li>
-          <ul>
+          <!-- <ul>
             <li><a href="../form/diabetes.html">Diabetes Follow Up</a></li>
             <li><a href="../form/asthmaFollowUp.html">Asthma Follow Up</a></li>
             <li><a href="../form/hypertension.html">HTN Follow Up</a></li>
@@ -38,7 +36,7 @@
             <li><a href="../form/pain.html">Pain Clinic</a></li>
             <li><a href="../form/ppc.html">Pre Pregnancy Care</a></li>
             <li><a href="../form/paedCal.html">Paed Dosage Calculator</a></li>
-          </ul>
+          </ul> -->
         </li>
       </ul>
     </nav>
@@ -64,7 +62,7 @@
       class="mainMenu"
       style="
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 10px;
         max-width: 100px;
         margin-left: auto;
@@ -92,6 +90,14 @@
       >
         Asthma
       </button>
+
+      <button
+        class="menuButton"
+        type="submit"
+        onclick="handleClick(href='form/ppc.html')"
+      >
+        PPC
+      </button>
       <button
         class="menuButton"
         type="submit"
@@ -110,11 +116,10 @@
       <button
         class="menuButton"
         type="submit"
-        onclick="handleClick(href='form/ppc.html')"
+        onclick="handleClick(href='form/denguefever.html')"
       >
-        PPC
+        Fever
       </button>
-
       <button
         class="menuButton"
         type="submit"
