@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pain As 5th Vital Sign</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ede3ff;
+      }
+
+      #result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../form/diabetes.html">Diabetes Follow Up</a></li>
+        <li><a href="../form/asthmaFollowUp.html">Asthma Follow Up</a></li>
+        <li><a href="../form/hypertension.html">HTN Follow Up</a></li>
+        <li><a href="../form/denguefever.html">Dengue Fever</a></li>
+        <li><a href="../form/ams.html">AMS</a></li>
+        <li><a href="../form/pain.html">Pain Clinic</a></li>
+        <li><a href="../form/ppc.html">Pre Pregnancy Care</a></li>
+        <li><a href="../form/paedCal.html">Paed Dosage Calculator</a></li>
+      </ul>
+    </nav>
+
+    <p></p>
+    <h1>Chronic Pain Assessment Format</h1>
+
+    <form id="clerking-form">
+      <label>Past History:</label>
+      <textarea id="pastHistory" name="pastHistory"></textarea>
+      <label>History taking/Description of Pain:</label>
+      <div class="info-container">
+        <img
+          src="../image/question.png"
+          alt="Question Mark Icon"
+          width="18"
+          height="18"
+        />
+        <div class="info-card">
+          <img
+            src="../image/painDescription.png"
+            alt="Question Mark Icon"
+            style="height: 180%; width: 180%"
+          />
+        </div>
+      </div>
+
+      <textarea id="history" class="bigArea" rows="20" cols="50" name="history">
+"Site:\nDuration"</textarea
+      >
+      <label>Vital sign: Shown in TPC</label>
+      <br />
+      <label>Physical examination:</label>
+      <div class="info-container">
+        <img
+          src="../image/question.png"
+          alt="Question Mark Icon"
+          width="18"
+          height="18"
+        />
+        <div class="info-card">
+          <img
+            src="../image/PainScore.png"
+            alt="Question Mark Icon"
+            style="height: 180%; width: 180%"
+          />
+        </div>
+      </div>
+      <br />
+
+      <textarea id="pe" name="pe"></textarea>
+      <label>Investigations:</label>
+      <textarea id="ix" name="ix"></textarea>
+
+      <!-- Diagnosis -->
+      <table style="width: 100%">
+        <tr>
+          <td><label for="diagnosis">Diagnosis:</label></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="chronicHeadache"
+                oninput="chronicHeadache()"
+              />
+              <label>Chronic Headache (R51)</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="neckPain"
+                oninput="neckPain()"
+              />
+              <label>Neck Pain(R52.2: Other Chronic Pain)</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="backPain"
+                oninput="backPain()"
+              />
+              <label>Back Pain (M54.5)</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="jointPain"
+                oninput="jointPain()"
+              />
+              <label>Joint Pain (M25.5)</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="fibromyalgia"
+                oninput="fibromyalgia()"
+              />
+              <label>Fibromyalgia (M79.7)</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="neuropathicPain"
+                oninput="neuropathicPain()"
+              />
+              <label>Neuropathic Pain (R52.2: Other Chronic Pain)</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="cancerPain"
+                oninput="cancerPain()"
+              />
+              <label>Cancer Pain (R52.2: Other Chronic Pain)</label>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- Material -->
+      <div>
+        <div id="chronicHeadache-form" style="display: none">
+          <img
+            src="../image/chronicHeadache.jpg"
+            alt="chronicHeadache Icon"
+            width="80%"
+            height="80%"
+          />
+        </div>
+        <div id="neckPain-form" style="display: none">
+          <img
+            src="../image/neckPain.jpg"
+            alt="neckPain Icon"
+            width="80%"
+            height="80%"
+          />
+        </div>
+        <div id="backPain-form" style="display: none">
+          <img
+            src="../image/backPain.jpg"
+            alt="backPain Icon"
+            width="80%"
+            height="80%"
+          />
+        </div>
+        <div id="jointPain-form" style="display: none">
+          <img
+            src="../image/jointPain.jpg"
+            alt="jointPain Icon"
+            width="80%"
+            height="80%"
+          />
+        </div>
+        <div id="fibromyalgia-form" style="display: none">
+          <img
+            src="../image/fibromyalgia.jpg"
+            alt="fibromyalgia Icon"
+            width="80%"
+            height="80%"
+          />
+        </div>
+        <div id="neuropathicPain-form" style="display: none">
+          <img
+            src="../image/neuropathicPain.jpg"
+            alt="neuropathicPain Icon"
+            width="80%"
+            height="80%"
+          />
+        </div>
+        <div id="cancerPain-form" style="display: none">
+          <img
+            src="../image/cancerPain.jpg"
+            alt="cancerPain Icon"
+            width="80%"
+            height="80%"
+          />
+        </div>
+      </div>
+
+      <div id="Mx-form" style="display: block">
+        <label>Pharmacotherapy:</label>
+        <div class="info-container">
+          <img
+            src="../image/question.png"
+            alt="Question Mark Icon"
+            width="18"
+            height="18"
+          />
+          <div class="info-card">
+            <img
+              src="../image/PainLadder.png"
+              alt="Question Mark Icon"
+              style="height: 180%; width: 180%"
+            />
+          </div>
+        </div>
+        <textarea id="pharma" name="pharma"></textarea>
+        <label>Non-pharmacotherapy:</label>
+
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">Physiotherapy</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="Physiotherapy"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">Occupational Therapy</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="OT"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">Counselor</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="Counselor"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%"
+                >Traditional & Complementary Medicine</span
+              >
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="TCM"
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="Goal-form" style="display: block">
+        <br />
+        <label>Treatment Goal:</label>
+        <br />
+        <label>Improve function:</label>
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">Reduce pain severity</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="ReducePain"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">Provide Safe & Tolerable Treatment</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="SafeTreatment"
+              />
+            </td>
+          </tr>
+        </table>
+        <br />
+        <label>Improve ability to participate in:</label>
+
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">Household work</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="HouseholdWork"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">Leisure activities</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="LeisureActivities"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%">
+              <span style="width: 40%">School attendance</span>
+            </td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="SchoolAttendance"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50%"><span style="width: 40%">Work</span></td>
+            <td style="width: 50%">
+              <input
+                style="width: 30%"
+                type="checkbox"
+                name="form-type"
+                value="Work"
+              />
+              <!-- <img
+                src="../image/question.png"
+                alt="Question Mark Icon"
+                width="18"
+                height="18"
+              /> -->
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+
+      <label>Additional Management:</label>
+      <textarea id="Fup" name="Fup"></textarea>
+      <br />
+
+      <table style="width: 100%">
+        <tr>
+          <td>
+            <button type="submit" onclick="makeSummary()">Generate</button>
+          </td>
+          <!-- <td>
+            <div onclick="setAllDone();">
+              <img
+                src="../image/cheat.png"
+                id="cheat../image"
+                alt="cheat"
+                style="width: 35px; height: 35px; margin-right: 10px"
+              />
+            </div>
+          </td> -->
+        </tr>
+      </table>
+    </form>
+
+    <!-- TPC -->
+    <div class="card">
+      <div class="container">
+        <button type="submit" onclick="copyToClipboard()">Copy to TPC</button>
+        <div id="summary"></div>
+        <canvas id="outputCanvas" style="display: none"></canvas>
+      </div>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const textareaHx = document.getElementById("history");
+    const prefilledHx =
+      "Site:\nDuration:\nNature:\nPsychosocial screening (ACT-UP):\nActivities: \nCoping: \nThink: \nUpset: \nPeople: ";
+    // Set the prefilled content initially
+    textareaHx.value = prefilledHx;
+  });
+
+  function makeSummary() {
+    // Get the form and summary elements
+    const form = document.getElementById("clerking-form");
+    const summary = document.getElementById("summary");
+
+    // Add event listener to form submit button
+    form.addEventListener("submit", (e) => {
+      // Prevent form submission
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(form);
+
+      // Create an empty object to store the form data
+      const formDataObj = {};
+
+      // Loop through the form data and add each key-value pair to the formDataObj
+      for (const [key, value] of formData.entries()) {
+        formDataObj[key] = value;
+      }
+
+      let diagnosis;
+      if (
+        document.querySelector('input[value="chronicHeadache"]').checked ||
+        document.querySelector('input[value="neckPain"]').checked ||
+        document.querySelector('input[value="backPain"]').checked ||
+        document.querySelector('input[value="jointPain"]').checked ||
+        document.querySelector('input[value="fibromyalgia"]').checked ||
+        document.querySelector('input[value="neuropathicPain"]').checked ||
+        document.querySelector('input[value="cancerPain"]').checked
+      ) {
+        let chronicHeadache = document.querySelector(
+          'input[value="chronicHeadache"]'
+        ).checked
+          ? "Chronic Headache (R51)"
+          : "";
+        let neckPain = document.querySelector('input[value="neckPain"]').checked
+          ? "Neck Pain (R52.2: Other Chronic Pain)"
+          : "";
+        let backPain = document.querySelector('input[value="backPain"]').checked
+          ? "Back Pain (M54.5)"
+          : "";
+        let jointPain = document.querySelector('input[value="jointPain"]')
+          .checked
+          ? "Joint Pain (M25.5)"
+          : "";
+        let fibromyalgia = document.querySelector('input[value="fibromyalgia"]')
+          .checked
+          ? "Fibromyalgia (M79.7)"
+          : "";
+        let neuropathicPain = document.querySelector(
+          'input[value="neuropathicPain"]'
+        ).checked
+          ? "Neuropathic Pain (R52.2: Other Chronic Pain)"
+          : "";
+        let cancerPain = document.querySelector('input[value="cancerPain"]')
+          .checked
+          ? "Cancer Pain (R52.2: Other Chronic Pain)"
+          : "";
+
+        // Collect the results into an array and filter out empty strings
+        let diagnosisList = [
+          chronicHeadache,
+          neckPain,
+          backPain,
+          jointPain,
+          fibromyalgia,
+          neuropathicPain,
+          cancerPain,
+        ].filter((item) => item !== "");
+
+        // Join the non-empty results into a single string
+        diagnosis = diagnosisList.join("\n");
+      } else {
+        diagnosis = "";
+      }
+
+      let nonPharma;
+      if (
+        document.querySelector('input[value="Physiotherapy"]').checked ||
+        document.querySelector('input[value="OT"]').checked ||
+        document.querySelector('input[value="Counselor"]').checked ||
+        document.querySelector('input[value="TCM"]').checked
+      ) {
+        let physio = document.querySelector('input[value="Physiotherapy"]')
+          .checked
+          ? "Refer Physiotherapist"
+          : "";
+        let ot = document.querySelector('input[value="OT"]').checked
+          ? "Refer OT"
+          : "";
+        let counselor = document.querySelector('input[value="Counselor"]')
+          .checked
+          ? "Refer Counselor"
+          : "";
+        let tcm = document.querySelector('input[value="TCM"]').checked
+          ? "Refer TCM"
+          : "";
+
+        // Collect the results into an array and filter out empty strings
+        let nonPharmaList = [physio, ot, counselor, tcm].filter(
+          (item) => item !== ""
+        );
+
+        // Join the non-empty results into a single string
+        nonPharma = nonPharmaList.join("\n");
+      } else {
+        nonPharma = "";
+      }
+
+      let goal;
+      if (
+        document.querySelector('input[value="ReducePain"]').checked ||
+        document.querySelector('input[value="SafeTreatment"]').checked ||
+        document.querySelector('input[value="HouseholdWork"]').checked ||
+        document.querySelector('input[value="LeisureActivities"]').checked ||
+        document.querySelector('input[value="SchoolAttendance"]').checked ||
+        document.querySelector('input[value="Work"]').checked
+      ) {
+        let pain = document.querySelector('input[value="ReducePain"]').checked
+          ? "Improve function by Reduce Pain"
+          : "";
+        let safe = document.querySelector('input[value="SafeTreatment"]')
+          .checked
+          ? "Improve function by Safe Treatment"
+          : "";
+        let houseW = document.querySelector('input[value="HouseholdWork"]')
+          .checked
+          ? "Improve ability to participate in Household Work"
+          : "";
+        let leisure = document.querySelector('input[value="LeisureActivities"]')
+          .checked
+          ? "Improve ability to participate in Leisure Activities"
+          : "";
+        let school = document.querySelector('input[value="SchoolAttendance"]')
+          .checked
+          ? "Improve ability to participate in School Attendance"
+          : "";
+        let work = document.querySelector('input[value="Work"]').checked
+          ? "Improve ability to participate in Work"
+          : "";
+
+        // Collect the results into an array and filter out empty strings
+        let goalList = [pain, safe, houseW, leisure, school, work].filter(
+          (item) => item !== ""
+        );
+
+        // Join the non-empty results into a single string
+        goal = goalList.join("\n");
+      } else {
+        goal = "";
+      }
+
+      const summaryHTML = `
+      <h2>Summary</h2>
+      <strong>Past History:</strong><br>${formDataObj.pastHistory}
+      <strong>History:</strong><br>${formDataObj.history}
+      <strong>Physical Examination:</strong>
+      <strong>Vital Sign:</strong>As Aboved
+      <strong>Other Findings:</strong>
+      <br>${formDataObj.pe}
+      <strong>Investigation Result:</strong><br>${formDataObj.ix}
+      <strong>Diagnosis:</strong><br>${diagnosis}
+      <strong>Management:</strong>
+      <strong>Pharmacotherapy:</strong><br>${formDataObj.pharma}
+      <strong>Non-Pharmacotherapy:</strong><br>${nonPharma}
+      <strong>Treatment Goal:</strong><br>${goal}
+      <strong>Follow-Up Plan:</strong><br>${formDataObj.Fup}
+      `;
+      // summaryHTML1 = summaryHTML.replace(/^\s*$(?:\r\n?|\n)/gm, ""); // Remove empty lines
+      summary.innerHTML = summaryHTML.replace(/\n/g, "<br>");
+    });
+  }
+
+  /* Close the dropdown if the user clicks outside of it */
+  window.onclick = function (event) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+        }
+      }
+    }
+  };
+
+  function copyToClipboard() {
+    const summaryPanel = document.getElementById("summary");
+    const summaryText = summaryPanel.innerText;
+    // Create a temporary textarea element to copy the text to the clipboard
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = summaryText;
+    document.body.appendChild(tempTextArea);
+    // Select and copy the text to the clipboard
+    tempTextArea.select();
+    document.execCommand("copy");
+    // Remove the temporary textarea element
+    document.body.removeChild(tempTextArea);
+    // Provide feedback to the user (optional)
+    alert("Summary copied!");
+  }
+
+  function chronicHeadache() {
+    const checkBox = document.querySelector('input[value="chronicHeadache"]');
+    const targetForm = document.getElementById("chronicHeadache-form");
+    checkBox.addEventListener("change", () => {
+      if (checkBox.checked) {
+        targetForm.style.display = "block";
+      } else {
+        targetForm.style.display = "none";
+      }
+    });
+  }
+
+  function neckPain() {
+    const checkBox = document.querySelector('input[value="neckPain"]');
+    const targetForm = document.getElementById("neckPain-form");
+    checkBox.addEventListener("change", () => {
+      if (checkBox.checked) {
+        targetForm.style.display = "block";
+      } else {
+        targetForm.style.display = "none";
+      }
+    });
+  }
+
+  function backPain() {
+    const checkBox = document.querySelector('input[value="backPain"]');
+    const targetForm = document.getElementById("backPain-form");
+    checkBox.addEventListener("change", () => {
+      if (checkBox.checked) {
+        targetForm.style.display = "block";
+      } else {
+        targetForm.style.display = "none";
+      }
+    });
+  }
+
+  function jointPain() {
+    const checkBox = document.querySelector('input[value="jointPain"]');
+    const targetForm = document.getElementById("jointPain-form");
+    checkBox.addEventListener("change", () => {
+      if (checkBox.checked) {
+        targetForm.style.display = "block";
+      } else {
+        targetForm.style.display = "none";
+      }
+    });
+  }
+
+  function fibromyalgia() {
+    const checkBox = document.querySelector('input[value="fibromyalgia"]');
+    const targetForm = document.getElementById("fibromyalgia-form");
+    checkBox.addEventListener("change", () => {
+      if (checkBox.checked) {
+        targetForm.style.display = "block";
+      } else {
+        targetForm.style.display = "none";
+      }
+    });
+  }
+
+  function neuropathicPain() {
+    const checkBox = document.querySelector('input[value="neuropathicPain"]');
+    const targetForm = document.getElementById("neuropathicPain-form");
+    checkBox.addEventListener("change", () => {
+      if (checkBox.checked) {
+        targetForm.style.display = "block";
+      } else {
+        targetForm.style.display = "none";
+      }
+    });
+  }
+
+  function cancerPain() {
+    const checkBox = document.querySelector('input[value="cancerPain"]');
+    const targetForm = document.getElementById("cancerPain-form");
+    checkBox.addEventListener("change", () => {
+      if (checkBox.checked) {
+        targetForm.style.display = "block";
+      } else {
+        targetForm.style.display = "none";
+      }
+    });
+  }
+</script>

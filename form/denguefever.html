@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fever Clerking Sheet</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      form {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: block;
+      }
+
+      /* #result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      } */
+      .detail-input {
+        margin-top: -10px;
+        font-size: 0.875rem; /* Reduce font size */
+        height: auto; /* Adjust height to auto */
+      }
+
+      #resultFBC {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      #resultVS {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      #resultSerology {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .remarkBox {
+        width: 100%;
+        height: 60px;
+        margin-bottom: 10px;
+      }
+
+      #dengueContainer {
+        border: 2px solid blue; /* Blue border */
+        padding: 10px; /* Optional: Add some padding inside the border */
+        border-radius: 5px; /* Optional: Rounded corners */
+        margin-top: 10px; /* Optional: Add some margin to the top */
+      }
+
+      #influenzaContainer {
+        border: 2px solid pink; /* Blue border */
+        padding: 10px; /* Optional: Add some padding inside the border */
+        border-radius: 5px; /* Optional: Rounded corners */
+        margin-top: 10px; /* Optional: Add some margin to the top */
+      }
+
+      #warningSx {
+        border: 2px solid red;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      #shockImage {
+        border: 2px solid green;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../form/diabetes.html">Diabetes Follow Up</a></li>
+        <li><a href="../form/asthmaFollowUp.html">Asthma Follow Up</a></li>
+        <li><a href="../form/hypertension.html">HTN Follow Up</a></li>
+        <li><a href="../form/denguefever.html">Dengue Fever</a></li>
+        <li><a href="../form/ams.html">AMS</a></li>
+        <li><a href="../form/pain.html">Pain Clinic</a></li>
+        <li><a href="../form/ppc.html">Pre Pregnancy Care</a></li>
+        <li><a href="../form/paedCal.html">Paed Dosage Calculator</a></li>
+      </ul>
+    </nav>
+
+    <h1>Fever Clerking Sheet</h1>
+    <form id="fever-clerking-form">
+      <!-- Temporary ID -->
+      <div class="form-group">
+        <label>ID/Name:</label>
+        <input type="text" class="form-control" id="ID" name="ID" />
+      </div>
+
+      <!-- History As General -->
+      <div class="form-group">
+        <div class="form-group">
+          <label for="dateOfFeverOnset">Date of fever onset:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="dateOfFeverOnset"
+            name="dateOfFeverOnset"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="chiefComplaint">Chief complaint:</label>
+          <textarea id="chiefComplaint" name="chiefComplaint"></textarea>
+        </div>
+
+        <div class="form-group">
+          <legend>Co-morbidity</legend>
+          <table>
+            <tbody>
+              <tr>
+                <td width="25%">
+                  <div>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="coMorbidity"
+                        value="NKMI"
+                        id="n1a"
+                      />
+                      <span></span> NKMI
+                    </label>
+                    <br />
+                    <label>
+                      <input type="checkbox" name="coMorbidity" value="Obese" />
+                      <span></span> Obese
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="coMorbidity"
+                        value="Pregnant"
+                      />
+                      <span></span> Pregnant
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="coMorbidity"
+                        value="Heart failure"
+                      />
+                      <span></span> Heart failure
+                    </label>
+                  </div>
+                </td>
+                <td width="25%">
+                  <div>
+                    <label>
+                      <input type="checkbox" name="coMorbidity" value="CKD" />
+                      <span></span> CKD
+                    </label>
+                    <br />
+                    <label>
+                      <input type="checkbox" name="coMorbidity" value="CLD" />
+                      <span></span> CLD
+                    </label>
+                    <br />
+                    <label>
+                      <input type="checkbox" name="coMorbidity" value="DM" />
+                      <span></span> DM
+                    </label>
+                    <br />
+                    <label>
+                      <input type="checkbox" name="coMorbidity" value="HPT" />
+                      <span></span> HPT
+                    </label>
+                  </div>
+                </td>
+                <td width="25%">
+                  <div>
+                    <label>
+                      <input type="checkbox" name="coMorbidity" value="IHD" />
+                      <span></span> IHD
+                    </label>
+                    <br />
+                    <label>
+                      <input type="checkbox" name="coMorbidity" value="COPD" />
+                      <span></span> COPD
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="coMorbidity"
+                        value="Age 65"
+                      />
+                      <span></span> Age 65
+                    </label>
+                  </div>
+                </td>
+                <td width="40%">
+                  <div>
+                    <textarea
+                      rows="1"
+                      placeholder="Other"
+                      style="width: 100%"
+                      name="rCoMorbidity"
+                    ></textarea>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Specific sign assessment -->
+      <div class="form-group">
+        <table>
+          <thead>
+            <tr>
+              <th>Characteristic</th>
+              <th>Answer</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td width="30%">
+                <label>Are you from a dengue prone area/ recent fogging?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="dengueProneArea" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="dengueProneArea"
+                      value="No"
+                      id="n1"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r1"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label
+                  >Anyone with recent history of fever in your house/Sick
+                  Contact?</label
+                >
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="recentFeverInHouse" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="recentFeverInHouse"
+                      value="No"
+                      id="n2"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r2"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Travel History?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="travelHistory" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="travelHistory"
+                      value="No"
+                      id="n2a"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r2a"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Any Bodyache?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="bodyache" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="bodyache" value="No" id="n3" />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r3"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Any Headache?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="headache" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="headache" value="No" id="n4" />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r4"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Any Retroorbital Pain?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="retroorbitalPain" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="retroorbitalPain"
+                      value="No"
+                      id="n5"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r5"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Any Rash?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="rash" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="rash" value="No" id="n6" />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r6"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Persistent Vomiting?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="vomiting" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="vomiting" value="No" id="n7" />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r7"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Diarrhea?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="diarrhea" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="diarrhea" value="No" id="n8" />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r8"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Abdominal pain/liver tenderness?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="abdominalPain" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="abdominalPain"
+                      value="No"
+                      id="n9"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r9"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Shortness of Breath?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="shortnessOfBreath" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="shortnessOfBreath"
+                      value="No"
+                      id="n10"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r10"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Mucosal/Internal Bleeding?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="internalBleeding" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="internalBleeding"
+                      value="No"
+                      id="n11"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r11"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Restlessness/Confusion?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="restlessness" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="restlessness"
+                      value="No"
+                      id="n12"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r12"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Plasma Leakage?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="plasmaLeakage"
+                      value="No"
+                      id="n13"
+                    />
+                    <span></span> No
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="plasmaLeakage"
+                      value="Yes, pleural effusion"
+                    />
+                    <span></span> Yes, pleural effusion
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="plasmaLeakage"
+                      value="Yes, ascites"
+                    />
+                    <span></span> Yes, ascites
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r13"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>How much can you drink?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="drink" value="Normal" id="n14" />
+                    <span></span> Normal
+                  </label>
+                  <label>
+                    <input type="radio" name="drink" value="Less" />
+                    <span></span> Less
+                  </label>
+                  <label>
+                    <input type="radio" name="drink" value="Nil" />
+                    <span></span> Nil
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r14"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Is there reduced urine volume?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input type="radio" name="reduceUrine" value="Yes" />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="reduceUrine"
+                      value="No"
+                      id="n15"
+                    />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r15"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <label>Can you perform usual activities?</label>
+              </td>
+              <td width="30%">
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="activities"
+                      value="Yes"
+                      id="n16"
+                    />
+                    <span></span> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="activities" value="No" />
+                    <span></span> No
+                  </label>
+                </div>
+              </td>
+              <td width="30%">
+                <div>
+                  <textarea
+                    class="remarkBox"
+                    rows="2"
+                    placeholder="Remarks"
+                    name="r16"
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Dengue Ralated -->
+      <div id="warningSx">
+        <legend>Warning Sign</legend>
+        <table cellspacing="0">
+          <tbody>
+            <tr>
+              <td width="70%">
+                <div>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="No Warning Sign"
+                    />
+                    <span></span> No Warning Sign
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="Persistent vomiting/ diarrhoea"
+                    />
+                    <span></span> Persistent vomiting/ diarrhoea (3x over last
+                    24h)
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="Abdominal pain"
+                    />
+                    <span></span> Any abdominal pain/ tenderness
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="Lethargy/restlessness"
+                    />
+                    <span></span> Lethargy/restlessness/ confusion
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="Tender liver"
+                    />
+                    <span></span> Tender liver
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="Third space fluid accumulation"
+                    />
+                    <span></span> Third space fluid accumulation
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="Spontaneous bleeding"
+                    />
+                    <span></span> Spontaneous bleeding tendencies
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="warningSigns"
+                      value="Raised HCT with rapid drop in platelet"
+                    />
+                    <span></span> Raised HCT with rapid drop in platelet
+                  </label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <legend>Other criteria for admission (Tick if Yes)</legend>
+        <table>
+          <tbody>
+            <tr>
+              <td width="70%">
+                <div>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="admissionCriteria"
+                      value="Syncope"
+                    />
+                    <span></span> Syncope
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="admissionCriteria"
+                      value="Diarrhoea"
+                    />
+                    <span></span> Diarrhoea
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="admissionCriteria"
+                      value="Social Factor"
+                    />
+                    <span></span> Social Factor
+                  </label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="form-group">
+        <legend>Assessment</legend>
+
+        <div class="form-group">
+          <textarea class="form-control" id="medicalInput" rows="10">
+Paste your medical data here:</textarea
+          >
+        </div>
+      </div>
+
+      <legend>Vital signs</legend>
+      <div>
+        <div id="resultVS" name="resultVS"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="physicalInput"
+          >Fill in the physical examination findings:</label
+        >
+        <textarea id="physicalInput" style="height: 200px" name="physicalInput">
+Skin Colour:
+CRT: 
+Extrimities:
+Pulse Volume:
+Throat: 
+Lymph node: 
+CVS: 
+Lungs: 
+Abdomen: 
+ </textarea
+        >
+      </div>
+      <h3>FBC Result</h3>
+      <div>
+        <div id="resultFBC" name="resultFBC"></div>
+      </div>
+
+      <h3>Dengue serology</h3>
+      <div>
+        <div id="resultSerology" name="resultSerology"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="otherInvestigation">Other investigation:</label>
+        <textarea
+          type="text"
+          class="form-control"
+          id="otherInvestigation"
+          name="otherInvestigation"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Diagnosis:</label>
+        <table>
+          <tbody>
+            <td width="30%">
+              <input
+                type="radio"
+                name="diagnosis"
+                value="Dengue"
+                onclick="toggleDetailInput('specificDiagnosis', false); toggleDetailInput('dengueContainer', true); toggleDetailInput('influenzaContainer', false);showShockImage(this.value);"
+              />
+              Dengue
+            </td>
+            <td width="40%">
+              <input
+                type="radio"
+                name="diagnosis"
+                value="ILI"
+                onclick="toggleDetailInput('specificDiagnosis', false); toggleDetailInput('dengueContainer', false); toggleDetailInput('influenzaContainer', true);showShockImage(this.value);"
+              />
+              Influenza Like Illness
+            </td>
+            <td width="30%">
+              <input
+                type="radio"
+                name="diagnosis"
+                value="Unlikely Dengue"
+                onclick="toggleDetailInput('specificDiagnosis', true); toggleDetailInput('dengueContainer', false); toggleDetailInput('influenzaContainer', false);showShockImage(this.value)"
+              />
+              Unlikely Dengue
+            </td>
+          </tbody>
+        </table>
+
+        <input
+          type="text"
+          id="specificDiagnosis"
+          name="specificDiagnosis"
+          class="form-control"
+          placeholder="Specify Diagnosis, consider measles/ leptospirosis/ malaria/ ILI/ etc"
+          style="display: none"
+        />
+      </div>
+
+      <!-- Dengue Container -->
+      <div id="dengueContainer" style="display: none">
+        <legend>Dengue Assessment</legend>
+        <div class="form-group">
+          <legend>Day <span id="feverDay"></span> of Fever</legend>
+        </div>
+
+        <div
+          class="form-group"
+          style="display: flex; justify-content: space-between"
+        >
+          <div style="width: 40%">
+            <label for="weight">Weight (kg):</label>
+            <input
+              type="number"
+              id="weight"
+              class="form-control"
+              placeholder="Enter weight in kg"
+              oninput="checkInputs()"
+            />
+          </div>
+          <div style="width: 40%">
+            <label for="height">Height (cm):</label>
+            <input
+              type="number"
+              id="height"
+              class="form-control"
+              placeholder="Enter height in cm"
+              oninput="checkInputs()"
+            />
+          </div>
+        </div>
+
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td width="30%">
+                  <label>Current Phase</label>
+                </td>
+                <td width="30%">
+                  <div style="display: flex; justify-content: space-between">
+                    <label>
+                      <input type="radio" name="phase" value="Febrile" />
+                      <span></span> Febrile
+                    </label>
+                    <label>
+                      <input type="radio" name="phase" value="Critical" />
+                      <span></span> Critical
+                    </label>
+                    <label>
+                      <input type="radio" name="phase" value="Recovery" />
+                      <span></span> Recovery
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-group">
+          <table>
+            <tbody>
+              <tr>
+                <td width="30%">
+                  <label>Haemodynamic Stage</label>
+                  <div class="info-container">
+                    <img
+                      src="../image/question.png"
+                      alt="Question Mark Icon"
+                      width="18"
+                      height="18"
+                    />
+                    <div class="info-card">
+                      <img src="../image/dengueStage.png" alt="dengueStage" />
+                    </div>
+                  </div>
+                </td>
+                <td width="30%">
+                  <div>
+                    <label>
+                      <input
+                        type="radio"
+                        name="shockStatus"
+                        value="No Shock"
+                        onclick="showShockImage(this.value); checkInputs()"
+                      />
+                      No Shock
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="shockStatus"
+                        value="Compensated Shock"
+                        onclick="showShockImage(this.value); checkInputs()"
+                      />
+                      Compensated Shock
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="shockStatus"
+                        value="Decompensated Shock"
+                        onclick="showShockImage(this.value); checkInputs()"
+                      />
+                      Decompensated Shock
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <legend>Check List for Severe Dengue (Tick if Yes)</legend>
+          <table>
+            <tbody>
+              <tr>
+                <td width="70%">
+                  <div>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="severeDengue"
+                        value="Not Severe Dengue"
+                      />
+                      <span></span> Not Severe Dengue
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="severeDengue"
+                        value="Hypotension"
+                      />
+                      <span></span> Hypotension SBP 90 or MAP 60 or SBP drop
+                      40mmHg from known baseline
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="severeDengue"
+                        value="Shock Index: HR SBP or impaired perfusion"
+                      />
+                      <span></span> Shock Index: HR SBP or impaired perfusion
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="severeDengue"
+                        value="Third space fluid accumulation with respiratory distress"
+                      />
+                      <span></span> Third space fluid accumulation with
+                      respiratory distress
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="severeDengue"
+                        value="Disturbed conscious level"
+                      />
+                      <span></span> Disturbed conscious level
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="severeDengue"
+                        value="Bleed GI/ non-mucosal and non-cutaneous"
+                      />
+                      <span></span> Any bleed GI/ non-mucosal and non-cutaneous/
+                      supra-physiological
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="severeDengue"
+                        value="Specific organ dysfunction"
+                      />
+                      <span></span> Specific organ dysfunction
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-group">
+          <legend>Dengue Alert Card Given:</legend>
+          <div style="display: flex; justify-content: flex-start">
+            <label>
+              <input type="radio" name="alertCardGiven" value="Yes" />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="alertCardGiven"
+                value="Not Applicable"
+              />
+              Not Applicable
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Influenza Container -->
+      <div id="influenzaContainer" style="display: none">
+        <legend>Influenza Assessment</legend>
+        <div class="form-group">
+          <legend>Day <span id="feverDay"></span> of Fever</legend>
+        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td width="30%"><label>Select the patient group:</label></td>
+              <td width="30%">
+                <div>
+                  <input
+                    type="radio"
+                    id="paed"
+                    name="patientGroup"
+                    value="paed"
+                    onclick="influenzaGroup('paed'); showILIGrpImage(this.value)"
+                  />
+                  <label for="paed">Paediatric</label><br />
+                  <input
+                    type="radio"
+                    id="adult"
+                    name="patientGroup"
+                    value="adult"
+                    onclick="influenzaGroup('adult'); showILIGrpImage(this.value)"
+                  />
+                  <label for="adult">Normal Adult</label><br />
+                  <input
+                    type="radio"
+                    id="pregnant"
+                    name="patientGroup"
+                    value="pregnant"
+                    onclick="influenzaGroup('pregnant');showILIGrpImage(this.value)"
+                  />
+                  <label for="pregnant">Pregnant Lady</label><br />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div id="paedAssessment" style="display: none">
+          <h3>Paediatric Clinical Assessment Tool</h3>
+          <table>
+            <tbody>
+              <tr>
+                <input
+                  type="checkbox"
+                  name="paedSymptoms"
+                  value="No Warning Sign"
+                  onclick="influenzaManagement()"
+                />
+                No Warning Sign
+                <br />
+                <input
+                  type="checkbox"
+                  name="paedSymptoms"
+                  value="respiratoryDistress"
+                  onclick="influenzaManagement()"
+                />
+                Severe respiratory distress
+                <br />
+                <input
+                  type="checkbox"
+                  name="paedSymptoms"
+                  value="increasedRate"
+                  onclick="influenzaManagement()"
+                />
+                Increased respiratory rate
+                <br />
+                <input
+                  type="checkbox"
+                  name="paedSymptoms"
+                  value="lowOxygen"
+                  onclick="influenzaManagement()"
+                />
+                Oxygen saturation ≤95%
+                <br />
+                <input
+                  type="checkbox"
+                  name="paedSymptoms"
+                  value="exhaustion"
+                  onclick="influenzaManagement()"
+                />
+                Respiratory exhaustion or apnoeic episode
+                <br />
+                <input
+                  type="checkbox"
+                  name="paedSymptoms"
+                  value="dehydrationShock"
+                  onclick="influenzaManagement()"
+                />
+                Evidence of severe dehydration or clinical shock
+                <br />
+                <input
+                  type="checkbox"
+                  name="paedSymptoms"
+                  value="alteredConsciousness"
+                  onclick="influenzaManagement()"
+                />
+                Altered conscious level
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="adultAssessment" style="display: none">
+          <h3>Normal Adult Clinical Assessment Tool</h3>
+          <table>
+            <tbody>
+              <tr>
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="No Warning Sign"
+                  onclick="influenzaManagement()"
+                />
+                No Warning Sign
+                <br />
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="tachypnoea"
+                  onclick="influenzaManagement()"
+                />
+                Tachypnoea (Respiratory rate > 24/min)
+                <br />
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="sentenceCompletion"
+                  onclick="influenzaManagement()"
+                />
+                Inability to complete sentences in one breath
+                <br />
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="accessoryMuscles"
+                  onclick="influenzaManagement()"
+                />
+                Use of accessory muscles of respiration
+                <br />
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="lowOxygen"
+                  onclick="influenzaManagement()"
+                />
+                Oxygen saturation < 95%
+                <br />
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="effortTolerance"
+                  onclick="influenzaManagement()"
+                />
+                Decreased effort tolerance since onset of ILI
+                <br />
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="dehydrationShock"
+                  onclick="influenzaManagement()"
+                />
+                Clinical dehydration or shock
+                <br />
+                <input
+                  type="checkbox"
+                  name="adultSymptoms"
+                  value="alteredConsciousness"
+                  onclick="influenzaManagement()"
+                />
+                Altered consciousness (e.g., new confusion, agitation, or
+                seizures)
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="pregnantAssessment" style="display: none">
+          <h3>Pregnant Lady Clinical Assessment Tool</h3>
+          <table>
+            <tbody>
+              <tr>
+                <input
+                  type="checkbox"
+                  name="pregnantSymptoms"
+                  value="No Warning Sign"
+                  onclick="influenzaManagement()"
+                />
+                No Warning Sign
+                <br />
+                <input
+                  type="checkbox"
+                  name="pregnantSymptoms"
+                  value="respiratoryImpairment"
+                  onclick="influenzaManagement()"
+                />
+                Respiratory impairment (Use of accessory muscles, saturation <
+                92%, chest pains)
+                <br />
+                <input
+                  type="checkbox"
+                  name="pregnantSymptoms"
+                  value="dehydrationShock"
+                  onclick="influenzaManagement()"
+                />
+                Dehydration or shock (SBP < 90 mmHg, DBP < 60 mmHg, delayed
+                capillary refill time)
+                <br />
+                <input
+                  type="checkbox"
+                  name="pregnantSymptoms"
+                  value="alteredConsciousness"
+                  onclick="influenzaManagement()"
+                />
+                Altered conscious level (Confusion, agitation, or seizures)
+                <br />
+                <input
+                  type="checkbox"
+                  name="pregnantSymptoms"
+                  value="vomitingDiarrhoea"
+                  onclick="influenzaManagement()"
+                />
+                Severe & persistent vomiting & diarrhoea
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div
+        id="shockImageContainer"
+        style="text-align: center; margin-bottom: 20px"
+      >
+        <a id="shockImageLink" href="#" target="_blank">
+          <img
+            id="shockImage"
+            src=""
+            alt="Shock Image"
+            style="max-width: 10%; height: auto; display: none; cursor: pointer"
+          />
+        </a>
+      </div>
+
+      <div class="form-group">
+        <label for="plan">Management:</label>
+        <textarea
+          style="height: 200px"
+          type="text"
+          class="form-control"
+          id="plan"
+          name="plan"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="notificationDate">Date of Notification:</label>
+        <input
+          type="date"
+          class="form-control"
+          id="notificationDate"
+          name="notificationDate"
+        />
+        <label>
+          <input
+            type="checkbox"
+            id="noNotification"
+            name="noNotification"
+            value="Not Applicable"
+            onclick="toggleNotificationDate()"
+          />
+          <span></span> Not Applicable
+        </label>
+      </div>
+
+      <table style="width: 100%">
+        <tr>
+          <td>
+            <button type="submit" onclick="makeSummary()">Generate</button>
+          </td>
+          <!--<td>
+            <div onclick="setAllDone();">
+              <img
+                src="../image/cheat.png"
+                id="cheatImage"
+                alt="cheat"
+                style="width: 35px; height: 35px; margin-right: 10px"
+              />
+            </div>
+          </td>-->
+        </tr>
+      </table>
+    </form>
+
+    <div class="card">
+      <div class="container">
+        <button id="copyToTPCButton" type="submit">Copy to TPC</button>
+        <div id="summary"></div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      document
+        .getElementById("medicalInput")
+        .addEventListener("input", analyzeData);
+
+      function analyzeData() {
+        const input = document.getElementById("medicalInput").value;
+        const vitalSignsOutput = document.getElementById("resultVS");
+        const fbcOutput = document.getElementById("resultFBC");
+        const dengueSerologyOutput = document.getElementById("resultSerology");
+
+        vitalSignsOutput.innerHTML = "";
+        fbcOutput.innerHTML = "";
+        dengueSerologyOutput.innerHTML = "";
+
+        if (!input.trim()) {
+          return;
+        }
+
+        // // Analyze vital signs
+        // const vitalSigns = input.match(
+        //   /(BP\s*:\s*\d+\s*\/\s*\d+\s*mmHg|Pulse\s*Rate\s*:\s*\d+\s*bpm|Temperature\s*:\s*\d+\s*°C|Pulse\s*Pressure\s*:\s*\d+\s*mmHg)/gi
+        // );
+        // if (vitalSigns) {
+        //   vitalSignsOutput.innerHTML = vitalSigns
+        //     .map((vs) => `${vs}<br/>`)
+        //     .join("");
+        // } else {
+        //   vitalSignsOutput.innerHTML = "<p>No vital signs data detected.</p>";
+        // }
+
+        // Analyze vital signs
+        const vitalSigns = input.match(
+          /(BP\s*:\s*\d+\s*\/\s*\d+\s*mmHg|Pulse\s*Rate\s*:\s*\d+\s*bpm|Pulse\s*Pressure\s*:\s*\d+\s*mmHg|Respiration\s*Rate\s*:\s*\d+\s*breaths\/minute|Temperature\s*:\s*\d+\.\d+\s*°C|Oxygen\s*Saturation\s*:\s*\d+\s*%|Pain\s*Score\s*:\s*\d+)/gi
+        );
+
+        if (vitalSigns) {
+          vitalSignsOutput.innerHTML = vitalSigns
+            .map((vs) => `${vs}<br/>`)
+            .join("");
+        } else {
+          vitalSignsOutput.innerHTML = "<p>No vital signs data detected.</p>";
+        }
+
+        // Analyze FBC
+        const fbcTests = {
+          "White blood cell": { range: [4.0, 11.0], unit: "x10" },
+          "Red blood cell": { range: [3.8, 5.8], unit: "x10" },
+          Hemoglobin: { range: [11.5, 16.5], unit: "g/dL" },
+          Hematocrit: { range: [37.0, 47.0], unit: "%" },
+          Platelet: { range: [150, 400], unit: "x10" },
+        };
+
+        const fbcMatches = [];
+        for (let key in fbcTests) {
+          const regex = new RegExp(`${key}\\s*:\\s*(\\d+\\.?\\d*)`, "i");
+          const match = input.match(regex);
+          if (match) {
+            const value = parseFloat(match[1]);
+            const { range, unit } = fbcTests[key];
+            const isWithinRange = value >= range[0] && value <= range[1];
+            const color = isWithinRange ? "green" : "red";
+            fbcMatches.push(
+              `<span style="color:${color};"><strong>${key}:</strong> ${value} ${unit} (Normal: ${range[0]} - ${range[1]} ${unit})</span>`
+            );
+          }
+        }
+
+        if (fbcMatches.length > 0) {
+          fbcOutput.innerHTML = fbcMatches.join("<br/>");
+        } else {
+          fbcOutput.innerHTML = "<p>No FBC data detected.</p>";
+        }
+
+        // Analyze Dengue Serology
+        const dengueSerology = input.match(
+          /(NS1 Antigen|IgM|IgG)\s*:\s*(Positive|Negative)/gi
+        );
+
+        if (dengueSerology) {
+          dengueSerologyOutput.innerHTML = dengueSerology
+            .map((ds) => {
+              const [test, result] = ds.split(/\s*:\s*/);
+              const color = result === "Positive" ? "red" : "black";
+              return `<span style="color:${color};">${test}: ${result}</span>`;
+            })
+            .join("<br/>");
+        } else {
+          dengueSerologyOutput.innerHTML =
+            "<p>No dengue serology data detected.</p>";
+        }
+      }
+
+      function toggleDetailInput(inputId, show) {
+        const input = document.getElementById(inputId);
+        document.getElementById("plan").value = "";
+        if (show) {
+          input.style.display = "block";
+          input.disabled = false;
+
+          // If showing dengueContainer or influenzaContainer, calculate and display the day of fever
+          if (
+            inputId === "dengueContainer" ||
+            inputId === "influenzaContainer"
+          ) {
+            calculateFeverDay();
+          }
+        } else {
+          input.style.display = "none";
+          input.disabled = true;
+        }
+      }
+
+      function calculateFeverDay() {
+        const dateOfFeverOnset =
+          document.getElementById("dateOfFeverOnset").value;
+        const feverDaySpan = document.getElementById("feverDay");
+
+        if (dateOfFeverOnset) {
+          const firstDay = new Date(dateOfFeverOnset);
+          const today = new Date();
+          const diffTime = Math.abs(today - firstDay);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Calculate days
+
+          feverDaySpan.textContent = diffDays;
+        } else {
+          feverDaySpan.textContent = "X"; // Placeholder if no date is selected
+        }
+      }
+
+      function makeSummary() {
+        // Get the form and summary elements
+        const form = document.getElementById("fever-clerking-form");
+        const summary = document.getElementById("summary");
+
+        // Add event listener to form submit button
+        form.addEventListener("submit", (e) => {
+          // Prevent form submission
+          e.preventDefault();
+
+          // Get form data
+          const formData = new FormData(form);
+
+          // Create an empty object to store the form data
+          const formDataObj = {};
+
+          // Loop through the form data and add each key-value pair to the formDataObj
+          for (const [key, value] of formData.entries()) {
+            formDataObj[key] = value;
+          }
+
+          // Get the content of resultVS.resultFBC
+          const vital = document.getElementById("resultVS").innerHTML;
+          const fbc = document.getElementById("resultFBC").innerHTML;
+          const serology = document.getElementById("resultSerology").innerHTML;
+
+          // Gather checkbox values
+          const warningSigns = Array.from(
+            document.querySelectorAll('input[name="warningSigns"]:checked')
+          )
+            .map((el) => el.value)
+            .join("\n");
+
+          const noWarningSigns =
+            warningSigns.length === 0 ||
+            warningSigns.includes("No Warning Sign");
+          const warningSignStatus = noWarningSigns
+            ? "without warning sign"
+            : "with warning signs";
+
+          const admissionCriteria = Array.from(
+            document.querySelectorAll('input[name="admissionCriteria"]:checked')
+          )
+            .map((el) => el.value)
+            .join("\n");
+
+          const coMorbidity = Array.from(
+            document.querySelectorAll('input[name="coMorbidity"]:checked')
+          )
+            .map((el) => el.value)
+            .join("\n");
+
+          const severeDengue = Array.from(
+            document.querySelectorAll('input[name="severeDengue"]:checked')
+          )
+            .map((el) => el.value)
+            .join("\n");
+
+          // Determine if any severe dengue signs are selected
+          let severeDengueStatus = "";
+          if (
+            severeDengue.length === 0 ||
+            severeDengue.includes("Not Severe Dengue")
+          ) {
+            severeDengueStatus = "No Severe Dengue Sign.";
+          } else {
+            severeDengueStatus =
+              "Severe Dengue Sign Present: " + severeDengue.split("\n");
+          }
+
+          // Get selected phase and shock status
+          const selectedPhase = formData.get("phase");
+          const selectedShockStatus = formData.get("shockStatus");
+
+          // Get calculated fever day
+          const feverDay = document.getElementById("feverDay").textContent;
+
+          // Construct the final diagnosis string based on diagnosis
+          let finalDiagnosis = "";
+          if (formData.get("diagnosis") === "Dengue") {
+            finalDiagnosis = `Dengue Fever, Day ${feverDay} of Fever, ${selectedPhase} phase, ${selectedShockStatus}, ${warningSignStatus}
+                      ${severeDengueStatus}`;
+
+            // Include Dengue Alert Card Given status
+            const alertCardGiven = formData.get("alertCardGiven");
+            finalDiagnosis += `<br><strong>Dengue Alert Card Given:</strong> ${alertCardGiven}`;
+          } else if (formData.get("diagnosis") === "ILI") {
+            finalDiagnosis = `Influenza Like Illness`;
+          } else if (formData.get("diagnosis") === "Unlikely Dengue") {
+            const specificDiagnosis = formData.get("specificDiagnosis");
+            finalDiagnosis = `Unlikely Dengue. Imp: ${specificDiagnosis}`;
+          }
+
+          // Determine notification status
+          const notificationDate = formData.get("notificationDate");
+          const noNotification = formData.get("noNotification");
+
+          let notificationStatus = notificationDate
+            ? notificationDate
+            : "Not Applicable";
+
+          // Create a summary of the form data
+          const summaryHTML = `
+                                  <h2>Summary</h2>
+                                  <strong>Date Of Fever Onset:</strong> ${formDataObj.dateOfFeverOnset}
+                                  <strong>History:</strong><br> ${formDataObj.chiefComplaint}
+                                  <strong>Co-Morbidity:</strong><br>${coMorbidity} ${formDataObj.rCoMorbidity}
+                                  <br><strong>Dengue prone area/ recent fogging:</strong> ${formDataObj.dengueProneArea} ${formDataObj.r1}
+                                  <strong>Recent history of fever at home:</strong> ${formDataObj.recentFeverInHouse} ${formDataObj.r2}
+                                  <strong>Travel History:</strong> ${formDataObj.travelHistory} ${formDataObj.r2a}
+                                  <strong>Concurrent Bodyache:</strong> ${formDataObj.bodyache} ${formDataObj.r3}
+                                  <strong>Concurrent Headache:</strong> ${formDataObj.headache} ${formDataObj.r4}
+                                  <strong>Concurrent Retroorbital pain:</strong> ${formDataObj.retroorbitalPain} ${formDataObj.r5}
+                                  <strong>Concurrent Rash:</strong> ${formDataObj.rash} ${formDataObj.r6}
+                                  <strong>Persistent Vomiting:</strong> ${formDataObj.vomiting} ${formDataObj.r7}
+                                  <strong>Diarrhea:</strong> ${formDataObj.diarrhea} ${formDataObj.r8}
+                                  <strong>Abdominal pain/liver tenderness:</strong> ${formDataObj.abdominalPain} ${formDataObj.r9}
+                                  <strong>Shortness of Breath:</strong> ${formDataObj.shortnessOfBreath} ${formDataObj.r10}
+                                  <strong>Mucosal/Internal Bleeding:</strong> ${formDataObj.internalBleeding} ${formDataObj.r11}
+                                  <strong>Restlessness/Confusion:</strong> ${formDataObj.restlessness} ${formDataObj.r12}
+                                  <strong>Plasma Leakage:</strong> ${formDataObj.plasmaLeakage} ${formDataObj.r13}
+                                  <strong>How much can you drink:</strong> ${formDataObj.drink} ${formDataObj.r14}
+                                  <strong>Reduced Urine Volume:</strong> ${formDataObj.reduceUrine} ${formDataObj.r15}
+                                  <strong>Can you perform usual activities:</strong> ${formDataObj.activities} ${formDataObj.r16}
+                                  <br><strong>Warning Signs:</strong><br> ${warningSigns}
+                                  <br><strong>Other criteria for admission:</strong><br> ${admissionCriteria}
+                                  <br><strong>Vital Sign:</strong><br> ${vital}
+                                  <strong>Physical Examination:</strong><br> ${formDataObj.physicalInput}
+                                  <br><strong>FBC Result:</strong><br> ${fbc}
+                                  <br><strong>Dengue Serology:</strong><br> ${serology}
+                                  <br><strong>Other Investigation:</strong><br> ${formDataObj.otherInvestigation}
+                                  <strong>Diagnosis:</strong><br> ${finalDiagnosis}
+                                  <br><strong>Management:</strong><br> ${formDataObj.plan}
+                                  <br><strong>Date of Notification:</strong> ${notificationStatus}
+                                `;
+
+          // Set the summary HTML
+          summary.innerHTML = summaryHTML.replace(/\n/g, "<br>");
+        });
+      }
+
+      document
+        .getElementById("copyToTPCButton")
+        .addEventListener("click", function () {
+          const resultDiv = document.getElementById("summary");
+          if (resultDiv.innerHTML.trim() !== "") {
+            navigator.clipboard
+              .writeText(resultDiv.innerText)
+              .then(() => {
+                alert("Summary copied to clipboard.");
+              })
+              .catch((err) => {
+                console.error("Failed to copy: ", err);
+              });
+          } else {
+            alert("No summary available to copy.");
+          }
+        });
+
+      function setAllDone() {
+        document.getElementById("n1").checked = true;
+        document.getElementById("n1a").checked = true;
+        document.getElementById("n2").checked = true;
+        document.getElementById("n2a").checked = true;
+        document.getElementById("n3").checked = true;
+        document.getElementById("n4").checked = true;
+        document.getElementById("n5").checked = true;
+        document.getElementById("n6").checked = true;
+        document.getElementById("n7").checked = true;
+        document.getElementById("n8").checked = true;
+        document.getElementById("n9").checked = true;
+        document.getElementById("n10").checked = true;
+        document.getElementById("n11").checked = true;
+        document.getElementById("n12").checked = true;
+        document.getElementById("n13").checked = true;
+        document.getElementById("n14").checked = true;
+        document.getElementById("n15").checked = true;
+        document.getElementById("n16").checked = true;
+        document.querySelector(
+          'input[name="warningSigns"][value="No Warning Sign"]'
+        ).checked = true;
+        document.getElementById("physicalInput").value =
+          " Alert \n Hydration: Well \n Skin Colour: Pink \n CRT:<2s \n Extremities: Warm \n Pulse Volume: Good  \n Throat: Normal \n Lymph node: Not Enlarge \n CVS: S1S2 No murmur \n Lungs: Clear \n Abdomen: Soft ";
+      }
+
+      function toggleNotificationDate() {
+        const notificationDateInput =
+          document.getElementById("notificationDate");
+        const noNotificationCheckbox =
+          document.getElementById("noNotification");
+
+        if (noNotificationCheckbox.checked) {
+          notificationDateInput.value = ""; // Clear the date input
+          notificationDateInput.disabled = true; // Disable the date input
+        } else {
+          notificationDateInput.disabled = false; // Enable the date input
+        }
+      }
+
+      function showShockImage(shockStatus) {
+        var image = document.getElementById("shockImage");
+        var link = document.getElementById("shockImageLink");
+
+        image.style.display = "block"; // Ensure the image is visible
+
+        if (shockStatus === "No Shock") {
+          image.src = "../image/dengue0.png"; // Update with the actual path to your image
+        } else if (shockStatus === "Compensated Shock") {
+          image.src = "../image/dengue1.png"; // Update with the actual path to your image
+        } else if (shockStatus === "Decompensated Shock") {
+          image.src = "../image/dengue2.png"; // Update with the actual path to your image
+        } else if (shockStatus === "Unlikely Dengue") {
+          image.style.display = "none";
+          link.href = "#";
+          return;
+        }
+
+        link.href = image.src; // Set the link href to the image source
+        link.target = "_blank"; // Open in a new window
+      }
+
+      function showILIGrpImage(status) {
+        var image = document.getElementById("shockImage");
+        var link = document.getElementById("shockImageLink");
+
+        image.style.display = "block"; // Ensure the image is visible
+
+        if (status === "pregnant") {
+          image.src = "../image/ILIPregnant.png"; // Update with the actual path to your image
+        } else if (status === "adult") {
+          image.src = "../image/ILIAdult.png"; // Update with the actual path to your image
+        } else if (status === "paed") {
+          image.src = "../image/ILIPaed.png"; // Update with the actual path to your image
+        } else {
+          image.style.display = "none";
+          link.href = "#";
+          return;
+        }
+
+        link.href = image.src; // Set the link href to the image source
+        link.target = "_blank"; // Open in a new window
+      }
+
+      function checkInputs() {
+        const dengueAdvice = `
+Do:
+1. Bed rest
+2. Adequate fluid intake (more than 8 glasses or 2 litres for an average person).
+  - Milk, fruit juice (caution with diabetes patient), and isotonic electrolyte solution (ORS) and barley water.
+  - Plain water alone is not sufficient and may cause electrolyte imbalance.
+3. Take paracetamol (not more than 4 grams per day).
+4. Tepid sponging.
+5. Use mosquito repellent or rest under a mosquito net during the day to prevent mosquito bites.
+6. Check for mosquito breeding places and destroy.
+
+Avoided:
+1. Do not take NSAIDs or steroids.
+2. Do not do massage, cupping, or quasa.
+            `;
+
+        const admissionAdvice = `
+1. Referal for admission.
+2. Fluid resusitation.
+            `;
+
+        const weight = document.getElementById("weight").value;
+        const height = document.getElementById("height").value;
+        const shockStatus = document.querySelector(
+          'input[name="shockStatus"]:checked'
+        );
+        const warningSigns = Array.from(
+          document.querySelectorAll('input[name="warningSigns"]:checked')
+        )
+          .map((el) => el.value)
+          .join("\n");
+        const noWarningSigns =
+          warningSigns.length === 0 || warningSigns.includes("No Warning Sign");
+        let managementBox = document.getElementById("plan");
+
+        // if (weight && height && shockStatus) {
+        //   document.getElementById("calculatorSection").style.display = "block";
+        // } else {
+        //   document.getElementById("calculatorSection").style.display = "none";
+        // }
+
+        if (shockStatus.value === "No Shock" && noWarningSigns) {
+          managementBox.value = dengueAdvice;
+        } else {
+          managementBox.value = admissionAdvice;
+          calculateFluid();
+        }
+      }
+
+      function calculateFluid() {
+        const weight = parseFloat(document.getElementById("weight").value);
+        const height = parseFloat(document.getElementById("height").value);
+        const shockStatus = document.querySelector(
+          'input[name="shockStatus"]:checked'
+        );
+
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+          // alert("Please enter valid weight and height.");
+          return;
+        }
+
+        if (!shockStatus) {
+          // alert("Please select haemodynamic stage.");
+          return;
+        }
+
+        const warningSigns = Array.from(
+          document.querySelectorAll('input[name="warningSigns"]:checked')
+        )
+          .map((el) => el.value)
+          .join("\n");
+
+        const bmi = weight / (height / 100) ** 2;
+        const ibwMale = 50 + 0.91 * (height - 152);
+        const ibwFemale = 45.5 + 0.91 * (height - 152);
+
+        let adjustedWeightMale = weight;
+        let adjustedWeightFemale = weight;
+
+        if (bmi > 27.5) {
+          adjustedWeightMale = ibwMale + 0.4 * (weight - ibwMale);
+          adjustedWeightFemale = ibwFemale + 0.4 * (weight - ibwFemale);
+        }
+
+        let fluidRate;
+
+        if (shockStatus.value === "No Shock") {
+          const noWarningSigns =
+            warningSigns.length === 0 ||
+            warningSigns.includes("No Warning Sign");
+
+          if (noWarningSigns) {
+            document.getElementById(
+              "plan"
+            ).innerHTML = `<strong>No fluid required as there are no warning signs.</strong>`;
+            return;
+          } else {
+            fluidRate = 5;
+          }
+        } else if (shockStatus.value === "Compensated Shock") {
+          fluidRate = 10;
+        } else if (shockStatus.value === "Decompensated Shock") {
+          fluidRate = 20;
+        }
+
+        const fluidRequirementMale = adjustedWeightMale * fluidRate;
+        const fluidRequirementFemale = adjustedWeightFemale * fluidRate;
+        //         let fluidResult = document.getElementById("fluidResult");
+        //         // let fluidResult = "";
+        //         fluidResult.innerHTML = `
+        // <strong>Male:</strong> <br>
+        // BMI: ${bmi.toFixed(2)} <br>
+        // Weight used for calculation (Male): ${adjustedWeightMale.toFixed(1)} kg <br>
+        // Fluid Rate: ${fluidRate}ml/kg/hr <br>
+        // IV Fluid Requirement (Male): ${fluidRequirementMale.toFixed(2)} ml/hr <br><br>
+
+        // <strong>Female:</strong> <br>
+        // BMI: ${bmi.toFixed(2)} <br>
+        // Weight used for calculation (Female): ${adjustedWeightFemale.toFixed(1)} kg <br>
+        // Fluid Rate: ${fluidRate}ml/kg/hr <br>
+        // IV Fluid Requirement (Female): ${fluidRequirementFemale.toFixed(2)} ml/hr
+        //                 `;
+        //         let managementBox = document.getElementById("plan");
+        //         managementBox.value += fluidResult.innerText;
+        let managementBox = document.getElementById("plan");
+        managementBox.value += `
+Male:
+BMI: ${bmi.toFixed(2)}
+Weight used for calculation (Male): ${adjustedWeightMale.toFixed(1)} kg
+Fluid Rate: ${fluidRate}ml/kg/hr
+IV Fluid Requirement (Male): ${fluidRequirementMale.toFixed(2)} ml/hr
+
+Female:
+BMI: ${bmi.toFixed(2)}
+Weight used for calculation (Female): ${adjustedWeightFemale.toFixed(1)} kg
+Fluid Rate: ${fluidRate}ml/kg/hr
+IV Fluid Requirement (Female): ${fluidRequirementFemale.toFixed(2)} ml/hr
+`;
+      }
+
+      function influenzaGroup(group) {
+        function clearCheckboxes(name) {
+          // Clear all checkboxes with the specified name
+          const checkboxes = document.getElementsByName(name);
+          for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false;
+          }
+        }
+
+        clearCheckboxes("paedSymptoms");
+        clearCheckboxes("adultSymptoms");
+        clearCheckboxes("pregnantSymptoms");
+        document.getElementById("plan").value = "";
+        // Hide all assessment tools initially
+        document.getElementById("paedAssessment").style.display = "none";
+        document.getElementById("adultAssessment").style.display = "none";
+        document.getElementById("pregnantAssessment").style.display = "none";
+
+        // Show the appropriate assessment tool based on the group selected
+        if (group === "paed") {
+          document.getElementById("paedAssessment").style.display = "block";
+        } else if (group === "adult") {
+          document.getElementById("adultAssessment").style.display = "block";
+        } else if (group === "pregnant") {
+          document.getElementById("pregnantAssessment").style.display = "block";
+        }
+      }
+
+      // function influenzaManagement() {
+      //   let managementBox = document.getElementById("plan");
+
+      //   // Check if any checkbox is checked
+      //   let checked =
+      //     document.querySelector('input[name="paedSymptoms"]:checked') ||
+      //     document.querySelector('input[name="adultSymptoms"]:checked') ||
+      //     document.querySelector('input[name="pregnantSymptoms"]:checked');
+
+      //   // Update the management advice text based on the selection
+
+      //   if (checked) {
+      //     managementBox.value =
+      //       "Admission is advised based on the selected symptoms.";
+      //   } else {
+      //     managementBox.value =
+      //       "Home monitoring is advised. If fever duration is less than 72 hours, consider starting Oseltamivir.";
+      //   }
+      // }
+
+      function influenzaManagement() {
+        let managementBox = document.getElementById("plan");
+        const influenzaHomeAdvice = `1. Take paracetamol at standard recommended doses to manage fever.
+2. Get adequate rest. Bed rest can help you feel better.
+3. Drink plenty of fluids (water, broth, sports drinks, juice, soup) to stay hydrated.
+4. Maintain good ventilation in shared household areas (e.g., keep windows open).
+5. Practice cough etiquette and improve personal hygiene, such as frequent hand washing.
+6. Avoid sharing personal items like utensils and linens without washing them thoroughly.
+7. Practice social distancing within the household, and wear a mask if you need to leave the home.
+8. Monitor for emergency warning signs, such as shortness of breath, persistent chest pains, or altered consciousness. Seek medical care if these occur.
+        `;
+
+        // Check if any checkbox is checked
+        let warningSignChecked =
+          document.querySelector('input[name="paedSymptoms"]:checked') ||
+          document.querySelector('input[name="adultSymptoms"]:checked') ||
+          document.querySelector('input[name="pregnantSymptoms"]:checked');
+
+        // Get the date of fever onset and calculate the duration of fever
+        const dateOfFeverOnset =
+          document.getElementById("dateOfFeverOnset").value;
+        const firstDay = new Date(dateOfFeverOnset);
+        const today = new Date();
+        const diffTime = Math.abs(today - firstDay);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Calculate days
+
+        if (
+          !warningSignChecked ||
+          warningSignChecked.value === "No Warning Sign"
+        ) {
+          let advice = influenzaHomeAdvice;
+          if (diffDays <= 2) {
+            advice += "9. Consider starting Oseltamivir for 5 days.";
+          }
+          managementBox.value = advice;
+        } else {
+          managementBox.value =
+            "Admission is advised based on the warning symptoms.";
+        }
+      }
+    </script>
+  </body>
+</html>
