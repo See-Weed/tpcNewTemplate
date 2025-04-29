@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fluid Maintenance Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f0f0f0;
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .input-group {
+        margin-bottom: 15px;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      .result {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Fluid Maintenance Calculator</h2>
+      <div class="input-group">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Enter weight in kg" />
+      </div>
+      <div class="input-group">
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" placeholder="Enter height in cm" />
+      </div>
+      <button onclick="calculateFluid()">Calculate Fluid Requirement</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      function calculateFluid() {
+        const weight = parseFloat(document.getElementById("weight").value);
+        const height = parseFloat(document.getElementById("height").value);
+
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+          alert("Please enter valid weight and height.");
+          return;
+        }
+
+        const bmi = weight / (height / 100) ** 2;
+
+        // Ideal Body Weight calculation
+        const ibwMale = 50 + 0.91 * (height - 152);
+        const ibwFemale = 45.5 + 0.91 * (height - 152);
+
+        let adjustedWeightMale = weight;
+        let adjustedWeightFemale = weight;
+
+        if (bmi > 27.5) {
+          adjustedWeightMale = ibwMale + 0.4 * (weight - ibwMale);
+          adjustedWeightFemale = ibwFemale + 0.4 * (weight - ibwFemale);
+        }
+
+        const fluidRequirementMale = adjustedWeightMale * 1.2; // Modify multiplier if needed
+        const fluidRequirementFemale = adjustedWeightFemale * 1.2; // Modify multiplier if needed
+
+        document.getElementById("result").innerHTML = `
+            <strong>Male:</strong> <br>
+            BMI: ${bmi.toFixed(2)} <br>
+            Weight used for calculation (Male): ${adjustedWeightMale.toFixed(
+              2
+            )} kg <br>
+            Fluid Maintenance Requirement (Male): ${fluidRequirementMale.toFixed(
+              2
+            )} ml/hr <br><br>
+
+            <strong>Female:</strong> <br>
+            BMI: ${bmi.toFixed(2)} <br>
+            Weight used for calculation (Female): ${adjustedWeightFemale.toFixed(
+              2
+            )} kg <br>
+            Fluid Maintenance Requirement (Female): ${fluidRequirementFemale.toFixed(
+              2
+            )} ml/hr
+        `;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foot Examination Clerking</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #a9dfbf;
+      }
+      #result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .spict-box {
+        border: 2px solid red;
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #fef5e7;
+      }
+      .foot-box {
+        border: 2px solid lightseagreen;
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #fef5e7;
+      }
+      #summary {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DM Annual Examination</h1>
+    <form id="clerking-form">
+      <!-- Foot Examination -->
+      <div>
+        <table>
+          <tr>
+            <td style="width: 40%">
+              Foot Examination
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="footAssessment"
+                oninput="footAssessment()"
+              />
+            </td>
+          </tr>
+        </table>
+
+        <div id="foot-form" class="foot-box" style="display: none">
+          <label for="inspection">Inspection:</label>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>(R) Foot</th>
+                <th>(L) Foot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Skin</td>
+                <td>
+                  <select name="skin_r">
+                    <option value="">--Select--</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Dry">Dry</option>
+                    <option value="Fissured">Fissured</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="skin_l">
+                    <option value="">--Select--</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Dry">Dry</option>
+                    <option value="Fissured">Fissured</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Callus / Corn</td>
+                <td>
+                  <select name="callus_r">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Present">Present</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="callus_l">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Present">Present</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Nail Deformity</td>
+                <td>
+                  <select name="nail_r">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Present">Present</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="nail_l">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Present">Present</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Foot Shape Abnormality</td>
+                <td>
+                  <select name="shape_r">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Hammer toes">Hammer toes</option>
+                    <option value="Claw toes">Claw toes</option>
+                    <option value="Charcot">Charcot</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="shape_l">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Hammer toes">Hammer toes</option>
+                    <option value="Claw toes">Claw toes</option>
+                    <option value="Charcot">Charcot</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Ulcer</td>
+                <td>
+                  <select name="ulcer_r">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Present">Present</option>
+                    <option value="Healed">Healed</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="ulcer_l">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Present">Present</option>
+                    <option value="Healed">Healed</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Amputation</td>
+                <td>
+                  <select name="amputation_r">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Partial">Partial</option>
+                    <option value="Total">Total</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="amputation_l">
+                    <option value="">--Select--</option>
+                    <option value="None">None</option>
+                    <option value="Partial">Partial</option>
+                    <option value="Total">Total</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table">
+            <label for="neurological">Neurological Examination:</label>
+            <thead>
+              <tr>
+                <th></th>
+                <th>(R) Foot</th>
+                <th>(L) Foot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cotton Wool (Light Touch)</td>
+                <td>
+                  <input type="radio" name="cotton_r" value="Felt" id="f1" />
+                  Felt
+                  <input type="radio" name="cotton_r" value="Not Felt" />
+                  Not Felt
+                </td>
+                <td>
+                  <input type="radio" name="cotton_l" value="Felt" id="f2" />
+                  Felt
+                  <input type="radio" name="cotton_l" value="Not Felt" /> Not
+                  Felt
+                </td>
+              </tr>
+              <tr>
+                <td>Neurotip (Pin Prick)</td>
+                <td>
+                  <input type="radio" name="neuro_r" value="Felt" id="f3" />
+                  Felt
+                  <input type="radio" name="neuro_r" value="Not Felt" /> Not
+                  Felt
+                </td>
+                <td>
+                  <input type="radio" name="neuro_l" value="Felt" id="f4" />
+                  Felt
+                  <input type="radio" name="neuro_l" value="Not Felt" /> Not
+                  Felt
+                </td>
+              </tr>
+              <tr>
+                <td>Monofilament 10 gm</td>
+                <td>
+                  <input type="radio" name="mono_r" value="Felt" id="f5" /> Felt
+                  <input type="radio" name="mono_r" value="Not Felt" /> Not Felt
+                </td>
+                <td>
+                  <input type="radio" name="mono_l" value="Felt" id="f6" /> Felt
+                  <input type="radio" name="mono_l" value="Not Felt" /> Not Felt
+                </td>
+              </tr>
+              <tr>
+                <td>Tuning Forks 128 Hz</td>
+                <td>
+                  <input type="radio" name="tuning_r" value="Felt" id="f7" />
+                  Felt
+                  <input type="radio" name="tuning_r" value="Not Felt" /> Not
+                  Felt
+                </td>
+                <td>
+                  <input type="radio" name="tuning_l" value="Felt" id="f8" />
+                  Felt
+                  <input type="radio" name="tuning_l" value="Not Felt" /> Not
+                  Felt
+                </td>
+              </tr>
+              <tr>
+                <td>Hallux</td>
+                <td>
+                  <input type="radio" name="hallux_r" value="Felt" id="f9" />
+                  Felt
+                  <input type="radio" name="hallux_r" value="Not Felt" /> Not
+                  Felt
+                </td>
+                <td>
+                  <input type="radio" name="hallux_l" value="Felt" id="f10" />
+                  Felt
+                  <input type="radio" name="hallux_l" value="Not Felt" /> Not
+                  Felt
+                </td>
+              </tr>
+              <tr>
+                <td>Medial Malleolus</td>
+                <td>
+                  <input type="radio" name="medial_r" value="Felt" id="f11" />
+                  Felt
+                  <input type="radio" name="medial_r" value="Not Felt" /> Not
+                  Felt
+                </td>
+                <td>
+                  <input type="radio" name="medial_l" value="Felt" id="f12" />
+                  Felt
+                  <input type="radio" name="medial_l" value="Not Felt" /> Not
+                  Felt
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <label for="pulse">Palpable Pulses:</label>
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>(R) Foot</th>
+                <th>(L) Foot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dorsalis Pedis</td>
+                <td>
+                  <input type="radio" name="dorsalis_r" value="++" id="f13" />
+                  ++ <input type="radio" name="dorsalis_r" value="+" /> +
+                  <input type="radio" name="dorsalis_r" value="Absent" /> Absent
+                </td>
+                <td>
+                  <input type="radio" name="dorsalis_l" value="++" id="f14" />
+                  ++ <input type="radio" name="dorsalis_l" value="+" /> +
+                  <input type="radio" name="dorsalis_l" value="Absent" /> Absent
+                </td>
+              </tr>
+              <tr>
+                <td>Posterior Tibial</td>
+                <td>
+                  <input type="radio" name="post_tib_r" value="++" id="f15" />
+                  ++ <input type="radio" name="post_tib_r" value="+" /> +
+                  <input type="radio" name="post_tib_r" value="Absent" /> Absent
+                </td>
+                <td>
+                  <input type="radio" name="post_tib_l" value="++" id="f16" />
+                  ++ <input type="radio" name="post_tib_l" value="+" /> +
+                  <input type="radio" name="post_tib_l" value="Absent" /> Absent
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- SPICT -->
+      <div>
+        <table>
+          <tr>
+            <td style="width: 40%">SPICT™ Indicators</td>
+            <td>
+              <input
+                style="width: 20%"
+                type="checkbox"
+                name="form-type"
+                value="spictAssessment"
+                oninput="spictAssessment()"
+              />
+            </td>
+            <td style="width: 20%">
+              <div class="info-container">
+                <img
+                  src="../image/question.png"
+                  alt="Question Mark Icon"
+                  width="18"
+                  height="18"
+                />
+                <div class="info-card">
+                  <img
+                    style="width: 120%"
+                    src="../image/SPICT-2022.png"
+                    alt="SPICT-2022"
+                  />
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div id="spict-form" class="spict-box" style="display: none">
+          <h5>General Indicators of Poor or Deteriorating Health</h5>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="No Indicator"
+              id="s1"
+            />
+            <label class="form-check-label">None</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="Unplanned admissions"
+            />
+            <label class="form-check-label"
+              >Unplanned hospital admission(s)</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="Poor performance status"
+            />
+            <label class="form-check-label"
+              >Poor or deteriorating performance status (bed/chair > half
+              day)</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="Dependence on others"
+            />
+            <label class="form-check-label"
+              >Increased dependence for care due to physical/mental
+              health</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="Carer support needed"
+            />
+            <label class="form-check-label"
+              >Carer needs more help and support</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="Weight loss"
+            />
+            <label class="form-check-label"
+              >Progressive weight loss / low muscle mass</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="Persistent symptoms"
+            />
+            <label class="form-check-label"
+              >Persistent symptoms despite optimal treatment</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictGeneral"
+              value="Patient/family requests palliation"
+            />
+            <label class="form-check-label"
+              >Request to reduce/stop treatment or focus on quality of
+              life</label
+            >
+          </div>
+
+          <h5>Specific Clinical Indicators (Tick those relevant)</h5>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Cancer"
+            /><label class="form-check-label"
+              >Cancer – progressive or symptom-control only</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Dementia/Frailty"
+            /><label class="form-check-label"
+              >Dementia/frailty – unable to dress, walk or eat, frequent
+              infections, reduced communication</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Neurological disease"
+            /><label class="form-check-label"
+              >Neurological disease – decline despite treatment, dysphagia,
+              aspiration pneumonia</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Respiratory disease"
+            /><label class="form-check-label"
+              >Respiratory disease – breathless at rest, long-term O2, previous
+              ventilation</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Heart/vascular disease"
+            /><label class="form-check-label"
+              >Heart disease – severe heart failure, angina at rest, inoperable
+              PVD</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Kidney disease"
+            /><label class="form-check-label"
+              >CKD stage 4/5 or dialysis withdrawal</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Liver disease"
+            /><label class="form-check-label"
+              >Liver disease with complications – ascites, encephalopathy,
+              bleeds, not for transplant</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="spictSpecific"
+              value="Other conditions"
+            /><label class="form-check-label"
+              >Other irreversible conditions with poor prognosis</label
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Management -->
+      <div>
+        <label for="additionalComments">Additional Comments:</label>
+        <textarea id="additionalComments" name="additionalComments"></textarea>
+      </div>
+      <br />
+      <div style="width: 70%">
+        <label>Management:</label>
+        <table style="width: 80%">
+          <tr>
+            <td style="width: 20%">
+              <input
+                style="width: 90%"
+                type="checkbox"
+                name="form-type"
+                value="insulinMx"
+                oninput="insulinMx()"
+              />
+            </td>
+            <td style="width: 40%">Insulin Technique</td>
+            <td style="width: 20%">
+              <div class="info-container">
+                <img
+                  src="../image/question.png"
+                  alt="Question Mark Icon"
+                  width="18"
+                  height="18"
+                />
+                <div class="info-card">
+                  <img
+                    style="width: 120%"
+                    src="../image/smbg.jpeg"
+                    alt="smbg"
+                  />
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="width: 20%">
+              <input
+                style="width: 90%"
+                type="checkbox"
+                name="form-type"
+                value="footMx"
+                oninput="footMx()"
+              />
+            </td>
+            <td style="width: 40%">Foot Care</td>
+            <td style="width: 20%">
+              <div class="info-container">
+                <img
+                  src="../image/question.png"
+                  alt="Question Mark Icon"
+                  width="18"
+                  height="18"
+                />
+                <div class="info-card">
+                  <img
+                    style="width: 120%"
+                    src="../image/FootCare.jpeg"
+                    alt="FootCare"
+                  />
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="width: 20%">
+              <input
+                style="width: 90%"
+                type="checkbox"
+                name="form-type"
+                value="healthMx"
+                oninput="healthMx()"
+              />
+            </td>
+            <td style="width: 40%">Health Education</td>
+            <td style="width: 20%">
+              <div class="info-container">
+                <img
+                  src="../image/question.png"
+                  alt="Question Mark Icon"
+                  width="18"
+                  height="18"
+                />
+                <div class="info-card">
+                  <img
+                    style="width: 120%"
+                    src="../image/healthEdu.jpeg"
+                    alt="healthEdu"
+                  />
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="width: 20%">
+              <input
+                style="width: 90%"
+                type="checkbox"
+                name="form-type"
+                value="spictMx"
+                oninput="spictMx()"
+              />
+            </td>
+            <td style="width: 40%">Primary Palliative Approach</td>
+            <!-- <td style="width: 20%">
+              <div class="info-container">
+                <img
+                  src="../image/question.png"
+                  alt="Question Mark Icon"
+                  width="18"
+                  height="18"
+                />
+                <div class="info-card">
+                  <img
+                    style="width: 120%"
+                    src="../image/heathyDiet.jpg"
+                    alt="heathyDiet"
+                  />
+                </div>
+              </div>
+            </td> -->
+          </tr>
+        </table>
+      </div>
+      <table style="width: 100%">
+        <tr>
+          <td>
+            <button type="submit" onclick="makeSummary()">⚙️ Generate</button>
+          </td>
+          <!-- <td>
+            <div onclick="setAllDone();">
+              <img
+                src="../image/cheat.png"
+                id="cheatImage"
+                alt="cheat"
+                style="width: 35px; height: 35px; margin-right: 10px"
+              />
+            </div>
+          </td> -->
+        </tr>
+      </table>
+    </form>
+    <div class="card">
+      <div class="container">
+        <div style="display: flex">
+          <button
+            type="submit"
+            style="margin-right: 1px"
+            onclick="copyToClipboard()"
+          >
+            📋 Copy to TPC
+          </button>
+          <button type="submit" onclick="printSummary()">
+            🖨️ Print Summary
+          </button>
+        </div>
+        <br />
+        <div id="summary"></div>
+      </div>
+    </div>
+    <script>
+      function makeSummary() {
+        // Get the form and summary elements
+        const form = document.getElementById("clerking-form");
+        const summary = document.getElementById("summary");
+
+        // Add event listener to form submit button
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const formDataObj = {};
+          for (const [key, value] of formData.entries()) {
+            formDataObj[key] = value;
+          }
+
+          let summaryHTML = "<h2>DM Annual Examination</h2>";
+
+          // === FOOT EXAMINATION SECTION ===
+          if (document.querySelector('input[value="footAssessment"]').checked) {
+            const inspectionFields = [
+              { label: "Skin", right: "skin_r", left: "skin_l" },
+              { label: "Callus / Corn", right: "callus_r", left: "callus_l" },
+              { label: "Nail Deformity", right: "nail_r", left: "nail_l" },
+              { label: "Foot Shape", right: "shape_r", left: "shape_l" },
+              { label: "Ulcer", right: "ulcer_r", left: "ulcer_l" },
+              {
+                label: "Amputation",
+                right: "amputation_r",
+                left: "amputation_l",
+              },
+            ];
+
+            summaryHTML += `<br><strong>Foot Examination</strong><br><strong>Inspection:</strong><br><table border="1" cellpadding="4" cellspacing="0" style="width: 100%; text-align: center; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Right</th>
+          <th>Left</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
+            inspectionFields.forEach((field) => {
+              const rightVal = formDataObj[field.right] || "-";
+              const leftVal = formDataObj[field.left] || "-";
+              summaryHTML += `
+        <tr>
+          <td>${field.label}</td>
+          <td>${rightVal}</td>
+          <td>${leftVal}</td>
+        </tr>`;
+            });
+
+            summaryHTML += "</tbody></table>";
+
+            const footFields = [
+              {
+                label: "Cotton Wool (Light Touch)",
+                right: "cotton_r",
+                left: "cotton_l",
+              },
+              {
+                label: "Neurotip (Pin Prick)",
+                right: "neuro_r",
+                left: "neuro_l",
+              },
+              { label: "Monofilament 10g", right: "mono_r", left: "mono_l" },
+              {
+                label: "Tuning Forks 128Hz",
+                right: "tuning_r",
+                left: "tuning_l",
+              },
+              { label: "Hallux", right: "hallux_r", left: "hallux_l" },
+              {
+                label: "Medial Malleolus",
+                right: "medial_r",
+                left: "medial_l",
+              },
+              {
+                label: "Dorsalis Pedis",
+                right: "dorsalis_r",
+                left: "dorsalis_l",
+              },
+              {
+                label: "Posterior Tibial",
+                right: "post_tib_r",
+                left: "post_tib_l",
+              },
+            ];
+
+            summaryHTML += `<strong>Neurological:</strong><table border="1" cellpadding="4" cellspacing="0" style="width: 100%; text-align: center; border-collapse: collapse;">
+                <thead>
+                  <tr>
+                    <th>Test</th>
+                    <th>Right Foot</th>
+                    <th>Left Foot</th>
+                  </tr>
+                </thead>
+                <tbody>`;
+            footFields.forEach((field) => {
+              const rightVal = formDataObj[field.right] || "-";
+              const leftVal = formDataObj[field.left] || "-";
+              summaryHTML += `<tr>
+                <td>${field.label}</td>
+                <td>${rightVal}</td>
+                <td>${leftVal}</td>
+              </tr>`;
+            });
+
+            summaryHTML += "</tbody></table>";
+
+            if (
+              formDataObj.additionalComments &&
+              formDataObj.additionalComments.trim() !== ""
+            ) {
+              summaryHTML += `<br><strong>Comments:</strong> ${formDataObj.additionalComments}<br>`;
+            }
+          }
+
+          // === SPICT SECTION ===
+          if (
+            document.querySelector('input[value="spictAssessment"]').checked
+          ) {
+            summaryHTML += "<br><strong>SPICT™ Indicators:</strong><br>";
+
+            const spictGeneral = document.querySelectorAll(
+              'input[name="spictGeneral"]:checked'
+            );
+            if (spictGeneral.length > 0) {
+              summaryHTML += "General Indicators:<br>";
+              spictGeneral.forEach((item) => {
+                summaryHTML += `- ${item.value}<br>`;
+              });
+            }
+
+            const spictSpecific = document.querySelectorAll(
+              'input[name="spictSpecific"]:checked'
+            );
+            if (spictSpecific.length > 0) {
+              summaryHTML += "Specific Clinical Indicators:<br>";
+              spictSpecific.forEach((item) => {
+                summaryHTML += `- ${item.value}<br>`;
+              });
+            }
+
+            const notes = formDataObj.spictPlanning;
+            if (notes && notes.trim() !== "") {
+              summaryHTML += `Care Planning Notes: ${notes}<br>`;
+            }
+          }
+          // === MANAGEMENT SECTION ===
+          const insulinAdvice =
+            "✔️ Insulin injection technique advice provided:\n" +
+            "• Injection site selection explained.\n" +
+            "• Emphasized site rotation – rotate across four abdominal quadrants to avoid lipohypertrophy, bruises, and lipodystrophy.\n" +
+            "• Advised on timing – do not skip injections and follow prescribed schedule.\n" +
+            "• Needle usage – use each needle a maximum of three times.\n" +
+            "• Insulin storage instructions provided.\n" +
+            "• Demonstrated insulin injection technique to the patient – patient understood.\n" +
+            "• Reinforced importance of compliance to insulin and medication to help lower HbA1c.\n";
+
+          const footAdvice =
+            "✔️ Foot care advice provided:\n" +
+            "1) Hygiene\n" +
+            "• Encourage patients to wash their feet with water and soap.\n" +
+            "• Dry the feet and between the toes using a clean and soft cloth to prevent infections.\n" +
+            "• Apply cream/lotion to the feet if the skin is dry, but avoid between the toes.\n\n" +
+            "2) Foot Inspection\n" +
+            "• Inspect feet daily, especially between the toes and the heels.\n" +
+            "• Check for any blisters, calluses, or wounds.\n" +
+            "• Examine feet in a well-lit area using a small mirror.\n\n" +
+            "3) Footwear\n" +
+            "• Wear suitable shoes that are not too tight to prevent foot injuries.\n" +
+            "• Buy shoes in the correct size, preferably in the evening.\n" +
+            "• Always wear closed shoes to avoid injuries.\n" +
+            "• Check inside shoes for foreign objects or sharp items before wearing.\n\n" +
+            "4) Socks\n" +
+            "• Wear cotton socks that are not too tight to ensure good blood circulation.\n" +
+            "• Change socks daily and turn them inside out to reduce friction from threads.\n\n" +
+            "5) Toenail Trimming\n" +
+            "• Cut toenails straight across to prevent injury at the nail edges.\n" +
+            "• Do not cut toenails too short.\n\n" +
+            "6) Injury Prevention\n" +
+            "• Wear soft slippers indoors; avoid walking barefoot.\n" +
+            "• Avoid walking on stones and do not use machinery if feet are numb.\n";
+
+          const healthAdvice =
+            "✔️ Health education and self-care advice provided:\n" +
+            "1) Diet\n" +
+            "• Avoid simple sugars such as chocolates, candies, and canned drinks to prevent rapid glucose spikes.\n" +
+            "• Identify types of carbohydrates, proteins, fiber, and fats.\n" +
+            "• Practice 'Quarter-Quarter-Half' concept, with low sugar and low carbohydrate intake.\n" +
+            "• Maintain a healthy and balanced diet.\n" +
+            "• Emphasize proper meal timing, types, and portions of food.\n" +
+            "• Educate on the importance of consuming complex carbohydrates using proper exchanges (e.g., rice, bihun, noodles, kuey teow).\n\n" +
+            "2) Glycaemic Targets\n" +
+            "• Fasting glucose: 4.4 – 7.0 mmol/L\n" +
+            "• 2-hour postprandial (2HPP): 4.4 – 8.5 mmol/L\n" +
+            "• HbA1c: < 6.5%\n\n" +
+            "3) Medication\n" +
+            "• Emphasize importance of compliance to medications and timing of OGLDs/insulin administration.\n\n" +
+            "4) Exercise\n" +
+            "• Recommended exercise: 150 minutes per week based on standard guidelines.\n" +
+            "• Examples include brisk walking or jogging, depending on patient’s ability.\n\n" +
+            "5) Weight Management\n" +
+            "• Target: 5–10% weight reduction over 6 months, according to diabetes guidelines.\n\n" +
+            "6) SMBG (Self-Monitoring Blood Glucose)\n" +
+            "• Importance of home blood glucose monitoring to evaluate treatment effectiveness.\n" +
+            "• Enables prompt action during hypoglycemia symptoms.\n\n" +
+            "7) Stress Management\n" +
+            "• Encourage stress control through recreational activities.\n\n" +
+            "8) Patient Counselling\n" +
+            "• Educate patient on the pathophysiology of diabetes.\n\n" +
+            "9) Diabetic Complications\n" +
+            "• Educate on risks of complications: neuropathy, nephropathy, and retinopathy.\n";
+
+          const spictAdvice =
+            "✔️ SPICT screening completed:\n" +
+            "• Patient and family informed of the need for palliative care assessment.\n" +
+            "• Explained the role of palliative care in improving comfort and quality of life.\n" +
+            "• Advised on support options and provided emotional reassurance.\n" +
+            "• Referred MO for further evaluation and management planning.\n";
+
+          const managementAdvice = {
+            insulinMx: insulinAdvice.replace(/\n/g, "<br>"),
+            footMx: footAdvice.replace(/\n/g, "<br>"),
+            healthMx: healthAdvice.replace(/\n/g, "<br>"),
+            spictMx: spictAdvice.replace(/\n/g, "<br>"),
+          };
+
+          // Collect all checked "form-type" values into an array
+          let selected = formData.getAll("form-type");
+          let selectedManagement = [];
+
+          selected.forEach((item) => {
+            if (managementAdvice[item]) {
+              selectedManagement.push(managementAdvice[item]);
+            }
+          });
+
+          if (selectedManagement.length > 0) {
+            summaryHTML += "<br><strong>Management:</strong><br>";
+            selectedManagement.forEach((advice) => {
+              summaryHTML += `${advice}<br>`;
+            });
+          }
+
+          // Set the summary HTML
+          summary.innerHTML = summaryHTML.trim();
+        });
+      }
+
+      /* Close the dropdown if the user clicks outside of it */
+      window.onclick = function (event) {
+        if (!event.target.matches(".dropbtn")) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      };
+
+      function setAllDone() {
+        const footChecked = document.querySelector(
+          'input[value="footAssessment"]'
+        ).checked;
+        const spictChecked = document.querySelector(
+          'input[value="spictAssessment"]'
+        ).checked;
+
+        // Only proceed if either is checked
+        if (footChecked || spictChecked) {
+          const idsToCheck = [
+            "f1",
+            "f2",
+            "f3",
+            "f4",
+            "f5",
+            "f6",
+            "f7",
+            "f8",
+            "f9",
+            "f10",
+            "f11",
+            "f12",
+            "f13",
+            "f14",
+            "f15",
+            "f16",
+            "s1",
+          ];
+
+          idsToCheck.forEach((id) => {
+            const element = document.getElementById(id);
+            if (element) {
+              element.checked = true;
+            }
+          });
+        }
+        // === Set default values for Inspection section ===
+        const inspectionDefaults = {
+          skin_r: "Normal",
+          skin_l: "Normal",
+          callus_r: "None",
+          callus_l: "None",
+          nail_r: "None",
+          nail_l: "None",
+          shape_r: "None",
+          shape_l: "None",
+          ulcer_r: "None",
+          ulcer_l: "None",
+          amputation_r: "None",
+          amputation_l: "None",
+        };
+
+        for (const [id, value] of Object.entries(inspectionDefaults)) {
+          const select = document.getElementsByName(id)[0];
+          if (select) {
+            select.value = value;
+          }
+        }
+      }
+
+      function copyToClipboard2() {
+        const summaryPanel = document.getElementById("summary");
+        const summaryText = summaryPanel.innerText;
+        // Create a temporary textarea element to copy the text to the clipboard
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = summaryText;
+        document.body.appendChild(tempTextArea);
+        // Select and copy the text to the clipboard
+        tempTextArea.select();
+        document.execCommand("copy");
+        // Remove the temporary textarea element
+        document.body.removeChild(tempTextArea);
+        // Provide feedback to the user (optional)
+        alert("Summary copied!");
+      }
+
+      function copyToClipboard() {
+        const summaryPanel = document.getElementById("summary");
+        const htmlContent = summaryPanel.innerHTML;
+
+        // Use Clipboard API to write HTML
+        if (navigator.clipboard && window.ClipboardItem) {
+          const blob = new Blob([htmlContent], { type: "text/html" });
+          const data = [new ClipboardItem({ "text/html": blob })];
+
+          navigator.clipboard
+            .write(data)
+            .then(() => {
+              alert("Formatted summary copied!");
+            })
+            .catch((err) => {
+              console.error("Failed to copy: ", err);
+              alert("Failed to copy formatted summary.");
+            });
+        } else {
+          // Fallback for older browsers (plain text)
+          const tempTextArea = document.createElement("textarea");
+          tempTextArea.value = summaryPanel.innerText;
+          document.body.appendChild(tempTextArea);
+          tempTextArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(tempTextArea);
+          alert("Summary copied (plain text only).");
+        }
+      }
+
+      function printSummary() {
+        const content = document.getElementById("summary").innerHTML;
+
+        const printWindow = window.open("", "", "height=600,width=800");
+        printWindow.document.write("<html><head><title>Print Summary</title>");
+        printWindow.document.write(
+          "<style>body { font-family: Arial; padding: 20px; } table { border-collapse: collapse; width: 100%; } td, th { border: 1px solid #333; padding: 8px; }</style>"
+        );
+        printWindow.document.write("</head><body>");
+        printWindow.document.write(content);
+        printWindow.document.write("</body></html>");
+
+        printWindow.document.close();
+        printWindow.focus();
+        printWindow.print();
+        printWindow.close();
+      }
+
+      function footAssessment() {
+        const Checkbox = document.querySelector(
+          'input[value="footAssessment"]'
+        );
+        const Form = document.getElementById("foot-form");
+
+        Checkbox.addEventListener("change", () => {
+          if (Checkbox.checked) {
+            Form.style.display = "block";
+          } else {
+            Form.style.display = "none";
+          }
+        });
+      }
+
+      function spictAssessment() {
+        const spictCheckbox = document.querySelector(
+          'input[value="spictAssessment"]'
+        );
+        const spictForm = document.getElementById("spict-form");
+        spictCheckbox.addEventListener("change", () => {
+          if (spictCheckbox.checked) {
+            spictForm.style.display = "block";
+          } else {
+            spictForm.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
